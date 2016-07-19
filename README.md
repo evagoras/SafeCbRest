@@ -58,7 +58,7 @@ property
 ```
 ###`validate()`
 Validate will use the cbValidator module and it will check the constraints in each Bean. For a structure it will return a key in the form of "basekey.nestedkey" and for arrays "basekey[1].nestedkey".
-Example:
+Example of a `400 Bad Request` returned to the client with the validation errors as JSON:
 ```javascript
 {
 	"location": [
