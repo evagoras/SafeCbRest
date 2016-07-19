@@ -103,6 +103,8 @@ Example:
 ```javascript
 property name="orderCode"     jsonType="number";
 property name="accountNumber" jsonType="string";
-property name="isOpen"        jsonType="boolean";
+property name="isOpen"        jsonType="boolean" column="bit_open";
 property name="dateIssued"    jsonType="date";
 ```
+
+The `column` attribute works similar to the ORM attribute, in that you can pass a key in the Bean named something and populate another key. In the example above, you can pass a key called `bit_open` and it will serialize as `isOpen`.
