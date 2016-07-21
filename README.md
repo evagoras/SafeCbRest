@@ -9,17 +9,18 @@ Request comes in with a JSON payload including the fields to update. Our Control
 var requestBean = wirebox.getInstance( "beans.request.order@v1" );
 requestBean.populate( memento = rc );
 // No validation errors
-if ( orderBean.validates() )
+if ( requestBean.validates() )
 {
 	orderQuery = orderDao.getOrderQuery( arguments.rc.orderCode );
 	if ( orderQuery.recordCount == 1 )
 	{
-		orderResponseBean.populate( memento = orderQuery );
+		var responseBean = wirebox.getInstance( "beans.response.order@v1" );
+		responseBean.populate( memento = orderQuery );
 		prc.response
 			.setStatusCode( 200 )
 			.setStatusText( "OK" )
 			.setData(
-				orderResponseBean.serializeAs( "json" )
+				responseBean.serializeAs( "json" )
 			)
 		;
 	}
